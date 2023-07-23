@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CyberScan - Content Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url(background_image.jpg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding-top: 100px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    /*#input-text {
+      width: 450px;
+      height: 70px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+      padding: 5px;
+    }*/
+    #input-text {
+      height: 50px;
+      width: 300px;
+      border: 0;
+      color: #fff;
+      transition: .2s ease;
+      margin-left: 10px;
+      border-radius: 30px;
+      outline: none;
+      text-indent: 10px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(84, 84, 84, 0.7);
+    }
+    #input-text::placeholder {
+      color: rgb(255, 255, 255);
+    }
+    .button-container {
+      display: flex;
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .clear-button {
+      background-color: #ff0000;
+    }
+
+    .analyze-button {
+      background-color: #008000;
+    }
+
+    #loading {
+      text-align: center;
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    #result {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="logo-con">
+    <img src="logo.png" alt="logo" height="150px">
+  </div>
+  <div class="container">
+
+      <textarea id="input-text" placeholder="Enter text here..."></textarea>
+      <div class="button-container">
+        <button class="button clear-button" onclick="clearText()">Clear</button>
+        <button class="button analyze-button" onclick="analyzeContent()">Analyze</button>
+      </div>
+      <div id="loading">Loading...</div>
+      <div id="result"></div>
+
+  </div>
+
+  <script>
+    function clearText() {
+      document.getElementById("input-text").value = "";
+    }
+
+    function analyzeContent() {
+      var inputText = document.getElementById("input-text").value;
+      var resultContainer = document.getElementById("result");
+      var loadingContainer = document.getElementById("loading");
+
+      // Display loading message for 3 seconds
+      loadingContainer.style.display = "block";
+      setTimeout(function() {
+        loadingContainer.style.display = "none";
+
+        // Generate analysis result
+        var resultMessage = "Detected content: " + inputText;
+
+        // Display the analysis result
+        resultContainer.textContent = resultMessage;
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
